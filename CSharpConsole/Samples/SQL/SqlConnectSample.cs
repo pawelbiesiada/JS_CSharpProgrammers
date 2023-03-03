@@ -60,14 +60,14 @@ namespace CSharpConsole.Samples.SQL
                     connection.Open();
 
                     var command = connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM  Student";
+                    command.CommandText = "SELECT * FROM Users";
 
                     var reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        var idCol = (int)reader["StudentId"];
-                        var nameCol = (string)reader["StudentName"];
+                        var idCol = (int)reader["Id"];
+                        var nameCol = (string)reader["Name"];
                         Console.WriteLine($"{idCol} : {nameCol}");
                     }
                 }
@@ -137,7 +137,7 @@ namespace CSharpConsole.Samples.SQL
 
                     var command = connection.CreateCommand();
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "pGetDelete";
+                    command.CommandText = "pDeleteUser";
 
                     var idPar = command.CreateParameter();
                     idPar.DbType = DbType.Int32;
