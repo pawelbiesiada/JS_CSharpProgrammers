@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSharpConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "1000 "
+    }
+  }
+}

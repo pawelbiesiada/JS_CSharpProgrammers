@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>CSharpConsole.Program</StartupObject>
+    <StartupObject>CSharpConsole.Samples.Class.ClassTest</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace CSharpConsole.Exercises.String
         static void Main()
         {
             var test = new StringConcat();
-            var loopCount = 100_000;
+            var loopCount = 150_000;
             var timer = Stopwatch.StartNew();
 
             test.ConcatUsingString(loopCount);
@@ -27,7 +27,7 @@ namespace CSharpConsole.Exercises.String
             var str = string.Empty;
             for (int i = 0; i < count; i++)
             {
-                str += " ";
+                str += " ";  //str = str + " "
             }
         }
 
