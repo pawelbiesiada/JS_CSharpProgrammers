@@ -1,5 +1,8 @@
-﻿using System;
+﻿using FirebirdSql.Data.FirebirdClient;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace CSharpConsole.Samples.Statements
 {
@@ -9,7 +12,17 @@ namespace CSharpConsole.Samples.Statements
         public void ReturnStatement(string[] args)
         {
             Console.WriteLine(Add(1, 2));
-            return;
+
+
+            try
+            {
+                TryCatch(args);
+
+
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public void TryCatch(string[] args)
@@ -32,11 +45,34 @@ namespace CSharpConsole.Samples.Statements
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-            }
+            }           
             finally
             {
                 Console.WriteLine("Good bye!");
             }
+
+            using (var conn = new SqlConnection(""))
+            {
+                conn.Open();
+                //
+                //throw
+                //
+
+            }
+
+            //var conn1 = new SqlConnection("");
+            //var conn1 = new OracleConnection("");
+            var conn1 = new FbConnection("");
+            try
+            {
+                conn1.Open();
+                
+            }
+            finally
+            {
+                conn1.Dispose(); 
+            }
+
         }
 
         public void YieldStatement(string[] args)

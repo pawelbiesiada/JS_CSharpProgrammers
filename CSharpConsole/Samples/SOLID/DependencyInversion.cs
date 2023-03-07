@@ -5,7 +5,7 @@ namespace CSharpConsole.Samples.SOLID
 {
     public class SampleWithNonDependencyInversion
     {
-        private ILogger _logger = new Logger();
+        private Logger _logger = new Logger();
 
         public void AddNewElement(ICollection<string> collection)
         {
@@ -35,6 +35,24 @@ namespace CSharpConsole.Samples.SOLID
     }
 
     public class Logger : ILogger
+    {
+        public void LogDebug(string msg)
+        {
+            Console.WriteLine($"DEBUG - {msg}");
+        }
+
+        public void LogWarning(string msg)
+        {
+            Console.WriteLine($"DEBUG - {msg}");
+        }
+
+        public void LogError(string msg)
+        {
+            Console.WriteLine($"DEBUG - {msg}");
+        }
+    }
+
+    public class DbLogger : ILogger
     {
         public void LogDebug(string msg)
         {
