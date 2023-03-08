@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace EFTestNET
 {
-    //Scaffold-DbContext "Server=H5YYVT2;Database=EFTestDb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+    //Scaffold-DbContext "Server=(localdb)\MSSQLLocalDB;Database=EFTestDb;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
     class Program
     {
         static void Main(string[] args)

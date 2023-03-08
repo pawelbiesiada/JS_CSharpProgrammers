@@ -14,6 +14,13 @@ namespace CSharpConsole.Exercises.MyExercises
         {
             var records = CreateCollection.GetUsers().Where(e => e != null);
 
+            var a = records.Where(u => u.IsActive).Select(u => u.Name);
+
+            var active = from u in records 
+                         where u.IsActive 
+                         select u.Name;
+
+
             records.Any();
 
             records.Where(e => e != null).Count();

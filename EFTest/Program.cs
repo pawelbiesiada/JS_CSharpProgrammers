@@ -11,7 +11,7 @@ namespace EFTest
         {
             try
             {
-                //AddUsers();
+                AddUsers();
                 //LazyLoadUserGroups();
                 //GetActiveUsersWithSp();
 
@@ -49,12 +49,22 @@ namespace EFTest
                     var userId = dbCtx.Users.Max(el => el.Id);
                     var groupId = dbCtx.Groups.Max(el => el.Id);
 
-                    var user = dbCtx.Users.Add(new User { Id = userId + 1, Name = "John", Password = "Password", IsActive = true });
+
+                    var activeUsers = dbCtx.Users.Where(u => u.IsActive);
+                    var users = activeUsers.Where(u => u.Id < 10).Select(u => u.Name).ToArray();
+
+                    foreach (var us in users)
+                    {
+                        Console.WriteLine(us);
+                    }
+
+
+                    var user = dbCtx.Users.Add(new User {Name = "John", Password = "Password", IsActive = true });
 
                     Group group = null; 
                     if (!dbCtx.Groups.Any(el => el.Name == "Administrator"))
                     {
-                        group = dbCtx.Groups.Add(new Group { Id = groupId + 1, Name = "Administrator" });
+                        group = dbCtx.Groups.Add(new Group {Name = "Administrator" });
                     }
                     //var users = dbCtx.Users.Include(e => e.Name).ToList();
                     dbCtx.SaveChanges();
