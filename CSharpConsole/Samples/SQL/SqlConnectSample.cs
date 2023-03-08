@@ -60,13 +60,19 @@ namespace CSharpConsole.Samples.SQL
                     connection.Open();
 
                     var command = connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM Users";
+                    command.CommandText = "SELECT * FROM Users WHERE Name = @IsActive";
+
+
+                    var isActiveParameter = command.CreateParameter();
+                    isActiveParameter.DbType = DbType.Boolean;
+                    isActiveParameter.ParameterName = "@IsActive";
+                    isActiveParameter.Value = "true";
 
                     var reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        var idCol = (int)reader["Id"];
+                        var idCol = (int?)reader["Id"];
                         var nameCol = (string)reader["Name"];
                         Console.WriteLine($"{idCol} : {nameCol}");
                     }
